@@ -22,6 +22,8 @@ namespace Game.Scripts.Player
         [SerializeField]
         private GameObject _model;
 
+        private PlayerInputActions _playerInput;
+
 
         private void OnEnable()
         {
@@ -38,6 +40,8 @@ namespace Game.Scripts.Player
         private void Start()
         {
             _controller = GetComponent<CharacterController>();
+            _playerInput = new PlayerInputActions();
+            _playerInput.Player.Enable();
 
             if (_controller == null)
                 Debug.LogError("No Character Controller Present");
@@ -55,7 +59,7 @@ namespace Game.Scripts.Player
 
         }
 
-        private void CalcutateMovement()
+       /* private void CalcutateMovement()
         {
             _playerGrounded = _controller.isGrounded;
             float h = Input.GetAxisRaw("Horizontal");
@@ -78,6 +82,34 @@ namespace Game.Scripts.Player
             }
             
             _controller.Move(velocity * Time.deltaTime);                      
+
+        } */
+
+        private void CalcutateMovement()
+        {
+            _playerGrounded = _controller.isGrounded;
+
+            var inputMovement = _playerInput.Player.Movement.ReadValue<Vector2>();
+            float h = inputMovement.x;
+            float v = inputMovement.y;
+
+            transform.Rotate(transform.up, h);
+
+            var direction = transform.forward * v;
+            var velocity = direction * _speed;
+
+
+            _anim.SetFloat("Speed", Mathf.Abs(velocity.magnitude));
+
+
+            if (_playerGrounded)
+                velocity.y = 0f;
+            if (!_playerGrounded)
+            {
+                velocity.y += -20f * Time.deltaTime;
+            }
+
+            _controller.Move(velocity * Time.deltaTime);
 
         }
 
