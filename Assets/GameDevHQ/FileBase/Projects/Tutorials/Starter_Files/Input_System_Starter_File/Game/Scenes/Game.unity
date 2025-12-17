@@ -5986,6 +5986,9 @@ MonoBehaviour:
   _detonator: {fileID: 2496590969500232579}
   _followCam: {fileID: 1266060213}
   _model: {fileID: 852618543}
+  _pickUpC4InteractableZone: {fileID: 1176696857}
+  _placeC4InteractableZone: {fileID: 482471385}
+  _detonateC4InteractableZone: {fileID: 564970562}
 --- !u!4 &359860634
 Transform:
   m_ObjectHideFlags: 0

@@ -23,15 +23,56 @@ namespace Game.Scripts.LiveObjects
         public static event Action onHackComplete;
         public static event Action onHackEnded;
 
-        private void OnEnable()
+        private PlayerInputActions _inputActions; // 
+
+        private void OnEnable() //
+        {
+            _inputActions = new PlayerInputActions();
+            _inputActions.Laptop.Enable();
+            _inputActions.Laptop.SwitchCameras.performed += SwitchCameras;
+            _inputActions.Laptop.Escape.performed += Escape;
+            _inputActions.Laptop.Hack.started += Hack_started;
+            _inputActions.Laptop.Hack.canceled += Hack_canceled;
+        }
+
+       /* private void OnEnable()
         {
             InteractableZone.onHoldStarted += InteractableZone_onHoldStarted;
             InteractableZone.onHoldEnded += InteractableZone_onHoldEnded;
+        } */
+
+        private void Escape(UnityEngine.InputSystem.InputAction.CallbackContext context) //
+        {
+            if(_hacked == true)
+            {
+                _hacked = false;
+                onHackEnded?.Invoke();
+                ResetCameras();
+            }
         }
 
-        private void Update()
+        private void SwitchCameras(UnityEngine.InputSystem.InputAction.CallbackContext context) //
         {
-            if (_hacked == true)
+            if(_hacked == true)
+            {
+                var previous = _activeCamera;
+                _activeCamera++;
+
+
+                if (_activeCamera >= _cameras.Length)
+                    _activeCamera = 0;
+
+
+                _cameras[_activeCamera].Priority = 11;
+                _cameras[previous].Priority = 9;
+            }
+        }
+
+       /* private void Update()
+        {
+
+
+           if (_hacked == true)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -45,16 +86,16 @@ namespace Game.Scripts.LiveObjects
 
                     _cameras[_activeCamera].Priority = 11;
                     _cameras[previous].Priority = 9;
-                }
+                } 
 
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     _hacked = false;
                     onHackEnded?.Invoke();
                     ResetCameras();
-                }
-            }
-        }
+                } 
+            } 
+        } */
 
         void ResetCameras()
         {
@@ -64,7 +105,18 @@ namespace Game.Scripts.LiveObjects
             }
         }
 
-        private void InteractableZone_onHoldStarted(int zoneID)
+        private void Hack_started(UnityEngine.InputSystem.InputAction.CallbackContext context) //
+        {
+            if (_interactableZone.GetZoneID() == 3 && _hacked == false && _interactableZone.IsInZone()) //Hacking terminal
+            {
+                _interactableZone.OnHoldKeyHit();
+                _progressBar.gameObject.SetActive(true);
+                StartCoroutine(HackingRoutine());
+                onHackComplete?.Invoke();
+            }
+        }
+
+      /*  private void InteractableZone_onHoldStarted(int zoneID)
         {
             if (zoneID == 3 && _hacked == false) //Hacking terminal
             {
@@ -72,9 +124,24 @@ namespace Game.Scripts.LiveObjects
                 StartCoroutine(HackingRoutine());
                 onHackComplete?.Invoke();
             }
+        } */
+
+        private void Hack_canceled(UnityEngine.InputSystem.InputAction.CallbackContext context) //
+        {
+            if (_interactableZone.GetZoneID() == 3 && _interactableZone.IsInZone()) //Hacking terminal
+            {
+                if (_hacked == true)
+                    return;
+
+                _interactableZone.OnHoldKeyReleased();
+                StopAllCoroutines();
+                _progressBar.gameObject.SetActive(false);
+                _progressBar.value = 0;
+                onHackEnded?.Invoke();
+            }
         }
 
-        private void InteractableZone_onHoldEnded(int zoneID)
+      /*  private void InteractableZone_onHoldEnded(int zoneID)
         {
             if (zoneID == 3) //Hacking terminal
             {
@@ -86,7 +153,7 @@ namespace Game.Scripts.LiveObjects
                 _progressBar.value = 0;
                 onHackEnded?.Invoke();
             }
-        }
+        } */
 
         
         IEnumerator HackingRoutine()
@@ -108,12 +175,19 @@ namespace Game.Scripts.LiveObjects
             _cameras[0].Priority = 11;
         }
         
-        private void OnDisable()
+        private void OnDisable() //
+        {
+            _inputActions.Laptop.SwitchCameras.performed -= SwitchCameras; 
+            _inputActions.Laptop.Escape.performed -= Escape; 
+            _inputActions.Laptop.Hack.started -= Hack_started;
+            _inputActions.Laptop.Hack.canceled -= Hack_canceled;
+        }
+
+       /* private void OnDisable()
         {
             InteractableZone.onHoldStarted -= InteractableZone_onHoldStarted;
             InteractableZone.onHoldEnded -= InteractableZone_onHoldEnded;
-        }
+        } */
     }
 
 }
-

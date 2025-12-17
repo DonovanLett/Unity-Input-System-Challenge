@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Scripts.UI;
+using System.Runtime.CompilerServices;
+using UnityEngine.InputSystem;
 
 
 namespace Game.Scripts.LiveObjects
@@ -33,8 +35,11 @@ namespace Game.Scripts.LiveObjects
         private string _displayMessage;
         [SerializeField]
         private GameObject[] _zoneItems;
+      //  [SerializeField] // Remove SerializeField After Observation
         private bool _inZone = false;
+      //  [SerializeField] // Remove SerializeField After Observation
         private bool _itemsCollected = false;
+      //  [SerializeField] // Remove SerializeField After Observation
         private bool _actionPerformed = false;
         [SerializeField]
         private Sprite _inventoryIcon;
@@ -47,7 +52,12 @@ namespace Game.Scripts.LiveObjects
 
         private bool _inHoldState = false;
 
+        
         private static int _currentZoneID = 0;
+
+     //   [SerializeField]
+        private int _currentZoneIDCopy = 0; // To Be Deleted Completely After Observation
+
         public static int CurrentZoneID
         { 
             get 
@@ -120,7 +130,61 @@ namespace Game.Scripts.LiveObjects
             }
         }
 
-        private void Update()
+        public void OnPressKeyHit() //
+        {
+            if (_keyState != KeyState.PressHold) // Maybe add "if _inZone == true" to this is statement as well.
+            {
+                //press
+                switch (_zoneType)
+                {
+                    case ZoneType.Collectable:
+                        if (_itemsCollected == false)
+                        {
+                            CollectItems();
+                            _itemsCollected = true;
+                            UIManager.Instance.DisplayInteractableZoneMessage(false);
+                        }
+                        break;
+
+                    case ZoneType.Action:
+                        if (_actionPerformed == false)
+                        {
+                            PerformAction();
+                            _actionPerformed = true;
+                            UIManager.Instance.DisplayInteractableZoneMessage(false);
+                        }
+                        break;
+                }
+            }
+        }
+
+        public void OnHoldKeyHit() //
+        {
+            if (_keyState == KeyState.PressHold && _inHoldState == false) // Maybe add "if _inZone == true" to this is statement as well.
+            {
+                _inHoldState = true;
+
+
+
+                switch (_zoneType)
+                {
+                    case ZoneType.HoldAction:
+                        PerformHoldAction();
+                        break;
+                }
+            }
+        }
+
+        public void OnHoldKeyReleased() //
+        {
+            if (_keyState == KeyState.PressHold) // Maybe add "if _inZone == true" to this is statement as well.
+            {
+                _inHoldState = false;
+                onHoldEnded?.Invoke(_zoneID);
+            }
+        }
+
+      /*  private void Update()
         {
             if (_inZone == true)
             {
@@ -171,7 +235,7 @@ namespace Game.Scripts.LiveObjects
 
                
             }
-        }
+        } */
        
         private void CollectItems()
         {
@@ -217,11 +281,18 @@ namespace Game.Scripts.LiveObjects
             return _zoneID;
         }
 
+        public bool IsInZone() //
+        {
+            return _inZone;
+        }
+
+
         public void CompleteTask(int zoneID)
         {
             if (zoneID == _zoneID)
             {
                 _currentZoneID++;
+                _currentZoneIDCopy = _currentZoneID; // Line To Be Deleted Completely After Observation
                 onZoneInteractionComplete?.Invoke(this);
             }
         }
@@ -256,5 +327,3 @@ namespace Game.Scripts.LiveObjects
         
     }
 }
-
-

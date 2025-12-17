@@ -1,6 +1,7 @@
-using System;
-using UnityEngine;
 using Cinemachine;
+using System;
+using System.Security.Policy;
+using UnityEngine;
 
 namespace Game.Scripts.LiveObjects
 {
@@ -23,21 +24,29 @@ namespace Game.Scripts.LiveObjects
         public static event Action onDriveModeEntered;
         public static event Action onDriveModeExited;
 
-        private PlayerInputActions _forkliftInput;
+        private PlayerInputActions _forkliftInput; //
 
         private void OnEnable()
-        {
-            InteractableZone.onZoneInteractionComplete += EnterDriveMode;
-
-            _forkliftInput = new PlayerInputActions();
-            _forkliftInput.Forklift.Enable();
-            _forkliftInput.Forklift.Escape.performed += ExitDriveMode;
+        { 
+            _forkliftInput = new PlayerInputActions(); //
+            _forkliftInput.Forklift.Enable(); //
+            _forkliftInput.Forklift.Enter.performed += EnterDriveMode; //
+            _forkliftInput.Forklift.Escape.performed += ExitDriveMode; //
         }
 
-        private void EnterDriveMode(InteractableZone zone)
+       /* 
+        private void OnEnable()
         {
-            if (_inDriveMode !=true && zone.GetZoneID() == 5) //Enter ForkLift
+            // InteractableZone.onZoneInteractionComplete += EnterDriveMode;
+        } 
+       */
+
+        private void EnterDriveMode(UnityEngine.InputSystem.InputAction.CallbackContext context) //
+        {
+            if (_inDriveMode != true && _interactableZone.GetZoneID() == 5 && _interactableZone.IsInZone()) //Enter ForkLift
             {
+                _interactableZone.OnPressKeyHit();
+
                 _inDriveMode = true;
                 _forkliftCam.Priority = 11;
                 onDriveModeEntered?.Invoke();
@@ -45,8 +54,21 @@ namespace Game.Scripts.LiveObjects
                 _interactableZone.CompleteTask(5);
             }
         }
+       
 
-        private void ExitDriveMode(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+       /* private void EnterDriveMode(InteractableZone zone)
+        {
+            if (_inDriveMode != true && zone.GetZoneID() == 5) //Enter ForkLift
+            {
+                _inDriveMode = true;
+                _forkliftCam.Priority = 11;
+                onDriveModeEntered?.Invoke();
+                _driverModel.SetActive(true);
+                _interactableZone.CompleteTask(5);
+            }
+        } */
+
+        private void ExitDriveMode(UnityEngine.InputSystem.InputAction.CallbackContext obj) //
         {
             _inDriveMode = false;
             _forkliftCam.Priority = 9;
@@ -79,7 +101,7 @@ namespace Game.Scripts.LiveObjects
 
 
 
-        private void CalcutateMovement()
+        private void CalcutateMovement() //
         {
             var inputMovement = _forkliftInput.Forklift.Movement.ReadValue<Vector2>();
             float h = inputMovement.x;
@@ -117,7 +139,7 @@ namespace Game.Scripts.LiveObjects
 
 
 
-        private void LiftControls()
+        private void LiftControls() //
         {
             var inputLift = _forkliftInput.Forklift.Lift.ReadValue<float>();
 
@@ -162,15 +184,21 @@ namespace Game.Scripts.LiveObjects
             }
             else if (_lift.transform.localPosition.y <= _liftUpperLimit.y)
                 _lift.transform.localPosition = _liftLowerLimit;
-        } 
+        }
 
 
 
 
-        private void OnDisable()
+        private void OnDisable() //
+        {
+            _forkliftInput.Forklift.Enter.performed -= EnterDriveMode; //
+            _forkliftInput.Forklift.Escape.performed -= ExitDriveMode; //
+        }
+
+      /*  private void OnDisable()
         {
             InteractableZone.onZoneInteractionComplete -= EnterDriveMode;
-        }
+        } */
 
     }
 }

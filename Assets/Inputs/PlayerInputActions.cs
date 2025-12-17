@@ -134,6 +134,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""2422cd92-0e58-453d-bf85-ceaec993a6f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -268,6 +277,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cffbe9f0-0be7-47af-b93d-0d31f45d9cbf"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -297,6 +317,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": ""Escape"",
                     ""type"": ""Button"",
                     ""id"": ""8a1a53fa-fc3d-4d36-ade9-34746e7ccfdc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""3460f5e1-b4db-4eb8-9c71-026c4db2fc31"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -402,6 +431,209 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e40d1dcf-8360-4d1f-96f2-af55a009feae"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Detonator"",
+            ""id"": ""5f7cbf7c-6493-4c59-ac57-bad3b15d9ca2"",
+            ""actions"": [
+                {
+                    ""name"": ""PickupC4"",
+                    ""type"": ""Button"",
+                    ""id"": ""00a915a2-f0df-4aa7-84cd-69a9d0e91c04"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlaceC4"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a69881f-0fb5-49ca-93bd-92adbb870ccd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DetonateC4"",
+                    ""type"": ""Button"",
+                    ""id"": ""6dadcead-22f7-4314-87d6-a3ec0eff9c30"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""41cb81c4-fe20-4b51-9285-eee79d249af8"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PickupC4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4be61ac0-f529-4288-b6b2-39943b82ca1b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlaceC4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a533e2fd-8b0f-4907-9b0c-112a45109d7d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DetonateC4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Laptop"",
+            ""id"": ""2e7e2803-950b-4a3f-ad07-4a9b99cbf2e4"",
+            ""actions"": [
+                {
+                    ""name"": ""Hack"",
+                    ""type"": ""Button"",
+                    ""id"": ""e49a4b6f-37f6-4bef-a8fd-f1df07db70fd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchCameras"",
+                    ""type"": ""Button"",
+                    ""id"": ""d562571c-1d11-4922-9684-f7ee8768dbc5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""2afb941c-bbc8-4b86-abaa-8261872d171e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f6e32146-b498-40f6-9873-c4fde59112ef"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Hold(duration=5)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e2c8c0c-bff8-4c9a-a883-f04989b8ce1e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchCameras"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e98e5be-4f8b-4646-a58a-9d471026638f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""EndZone"",
+            ""id"": ""1a2a8422-c42d-4348-a4fe-f607cb0867d8"",
+            ""actions"": [
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4094aa6-efe7-45e8-b1f8-941efa006234"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""11f65343-c98e-4699-9bbe-99df855f5ce3"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Crate"",
+            ""id"": ""1f1b6714-e3d4-4c42-bd1f-7a6c66e67962"",
+            ""actions"": [
+                {
+                    ""name"": ""Break"",
+                    ""type"": ""Button"",
+                    ""id"": ""68327cb4-4131-4f03-82fa-6b79a887d2ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a7bbe8df-b374-4c9e-889f-a799670215ad"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Break"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -417,11 +649,29 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Drone_VerticalMovement = m_Drone.FindAction("VerticalMovement", throwIfNotFound: true);
         m_Drone_Rotation = m_Drone.FindAction("Rotation", throwIfNotFound: true);
         m_Drone_Escape = m_Drone.FindAction("Escape", throwIfNotFound: true);
+        m_Drone_Enter = m_Drone.FindAction("Enter", throwIfNotFound: true);
         // Forklift
         m_Forklift = asset.FindActionMap("Forklift", throwIfNotFound: true);
         m_Forklift_Movement = m_Forklift.FindAction("Movement", throwIfNotFound: true);
         m_Forklift_Lift = m_Forklift.FindAction("Lift", throwIfNotFound: true);
         m_Forklift_Escape = m_Forklift.FindAction("Escape", throwIfNotFound: true);
+        m_Forklift_Enter = m_Forklift.FindAction("Enter", throwIfNotFound: true);
+        // Detonator
+        m_Detonator = asset.FindActionMap("Detonator", throwIfNotFound: true);
+        m_Detonator_PickupC4 = m_Detonator.FindAction("PickupC4", throwIfNotFound: true);
+        m_Detonator_PlaceC4 = m_Detonator.FindAction("PlaceC4", throwIfNotFound: true);
+        m_Detonator_DetonateC4 = m_Detonator.FindAction("DetonateC4", throwIfNotFound: true);
+        // Laptop
+        m_Laptop = asset.FindActionMap("Laptop", throwIfNotFound: true);
+        m_Laptop_Hack = m_Laptop.FindAction("Hack", throwIfNotFound: true);
+        m_Laptop_SwitchCameras = m_Laptop.FindAction("SwitchCameras", throwIfNotFound: true);
+        m_Laptop_Escape = m_Laptop.FindAction("Escape", throwIfNotFound: true);
+        // EndZone
+        m_EndZone = asset.FindActionMap("EndZone", throwIfNotFound: true);
+        m_EndZone_Restart = m_EndZone.FindAction("Restart", throwIfNotFound: true);
+        // Crate
+        m_Crate = asset.FindActionMap("Crate", throwIfNotFound: true);
+        m_Crate_Break = m_Crate.FindAction("Break", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -518,6 +768,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Drone_VerticalMovement;
     private readonly InputAction m_Drone_Rotation;
     private readonly InputAction m_Drone_Escape;
+    private readonly InputAction m_Drone_Enter;
     public struct DroneActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -526,6 +777,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @VerticalMovement => m_Wrapper.m_Drone_VerticalMovement;
         public InputAction @Rotation => m_Wrapper.m_Drone_Rotation;
         public InputAction @Escape => m_Wrapper.m_Drone_Escape;
+        public InputAction @Enter => m_Wrapper.m_Drone_Enter;
         public InputActionMap Get() { return m_Wrapper.m_Drone; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -547,6 +799,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Escape.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnEscape;
                 @Escape.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnEscape;
                 @Escape.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnEscape;
+                @Enter.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnEnter;
             }
             m_Wrapper.m_DroneActionsCallbackInterface = instance;
             if (instance != null)
@@ -563,6 +818,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Escape.started += instance.OnEscape;
                 @Escape.performed += instance.OnEscape;
                 @Escape.canceled += instance.OnEscape;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
             }
         }
     }
@@ -574,6 +832,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Forklift_Movement;
     private readonly InputAction m_Forklift_Lift;
     private readonly InputAction m_Forklift_Escape;
+    private readonly InputAction m_Forklift_Enter;
     public struct ForkliftActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -581,6 +840,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Forklift_Movement;
         public InputAction @Lift => m_Wrapper.m_Forklift_Lift;
         public InputAction @Escape => m_Wrapper.m_Forklift_Escape;
+        public InputAction @Enter => m_Wrapper.m_Forklift_Enter;
         public InputActionMap Get() { return m_Wrapper.m_Forklift; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -599,6 +859,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Escape.started -= m_Wrapper.m_ForkliftActionsCallbackInterface.OnEscape;
                 @Escape.performed -= m_Wrapper.m_ForkliftActionsCallbackInterface.OnEscape;
                 @Escape.canceled -= m_Wrapper.m_ForkliftActionsCallbackInterface.OnEscape;
+                @Enter.started -= m_Wrapper.m_ForkliftActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_ForkliftActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_ForkliftActionsCallbackInterface.OnEnter;
             }
             m_Wrapper.m_ForkliftActionsCallbackInterface = instance;
             if (instance != null)
@@ -612,10 +875,177 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Escape.started += instance.OnEscape;
                 @Escape.performed += instance.OnEscape;
                 @Escape.canceled += instance.OnEscape;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
             }
         }
     }
     public ForkliftActions @Forklift => new ForkliftActions(this);
+
+    // Detonator
+    private readonly InputActionMap m_Detonator;
+    private IDetonatorActions m_DetonatorActionsCallbackInterface;
+    private readonly InputAction m_Detonator_PickupC4;
+    private readonly InputAction m_Detonator_PlaceC4;
+    private readonly InputAction m_Detonator_DetonateC4;
+    public struct DetonatorActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public DetonatorActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PickupC4 => m_Wrapper.m_Detonator_PickupC4;
+        public InputAction @PlaceC4 => m_Wrapper.m_Detonator_PlaceC4;
+        public InputAction @DetonateC4 => m_Wrapper.m_Detonator_DetonateC4;
+        public InputActionMap Get() { return m_Wrapper.m_Detonator; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DetonatorActions set) { return set.Get(); }
+        public void SetCallbacks(IDetonatorActions instance)
+        {
+            if (m_Wrapper.m_DetonatorActionsCallbackInterface != null)
+            {
+                @PickupC4.started -= m_Wrapper.m_DetonatorActionsCallbackInterface.OnPickupC4;
+                @PickupC4.performed -= m_Wrapper.m_DetonatorActionsCallbackInterface.OnPickupC4;
+                @PickupC4.canceled -= m_Wrapper.m_DetonatorActionsCallbackInterface.OnPickupC4;
+                @PlaceC4.started -= m_Wrapper.m_DetonatorActionsCallbackInterface.OnPlaceC4;
+                @PlaceC4.performed -= m_Wrapper.m_DetonatorActionsCallbackInterface.OnPlaceC4;
+                @PlaceC4.canceled -= m_Wrapper.m_DetonatorActionsCallbackInterface.OnPlaceC4;
+                @DetonateC4.started -= m_Wrapper.m_DetonatorActionsCallbackInterface.OnDetonateC4;
+                @DetonateC4.performed -= m_Wrapper.m_DetonatorActionsCallbackInterface.OnDetonateC4;
+                @DetonateC4.canceled -= m_Wrapper.m_DetonatorActionsCallbackInterface.OnDetonateC4;
+            }
+            m_Wrapper.m_DetonatorActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @PickupC4.started += instance.OnPickupC4;
+                @PickupC4.performed += instance.OnPickupC4;
+                @PickupC4.canceled += instance.OnPickupC4;
+                @PlaceC4.started += instance.OnPlaceC4;
+                @PlaceC4.performed += instance.OnPlaceC4;
+                @PlaceC4.canceled += instance.OnPlaceC4;
+                @DetonateC4.started += instance.OnDetonateC4;
+                @DetonateC4.performed += instance.OnDetonateC4;
+                @DetonateC4.canceled += instance.OnDetonateC4;
+            }
+        }
+    }
+    public DetonatorActions @Detonator => new DetonatorActions(this);
+
+    // Laptop
+    private readonly InputActionMap m_Laptop;
+    private ILaptopActions m_LaptopActionsCallbackInterface;
+    private readonly InputAction m_Laptop_Hack;
+    private readonly InputAction m_Laptop_SwitchCameras;
+    private readonly InputAction m_Laptop_Escape;
+    public struct LaptopActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public LaptopActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Hack => m_Wrapper.m_Laptop_Hack;
+        public InputAction @SwitchCameras => m_Wrapper.m_Laptop_SwitchCameras;
+        public InputAction @Escape => m_Wrapper.m_Laptop_Escape;
+        public InputActionMap Get() { return m_Wrapper.m_Laptop; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(LaptopActions set) { return set.Get(); }
+        public void SetCallbacks(ILaptopActions instance)
+        {
+            if (m_Wrapper.m_LaptopActionsCallbackInterface != null)
+            {
+                @Hack.started -= m_Wrapper.m_LaptopActionsCallbackInterface.OnHack;
+                @Hack.performed -= m_Wrapper.m_LaptopActionsCallbackInterface.OnHack;
+                @Hack.canceled -= m_Wrapper.m_LaptopActionsCallbackInterface.OnHack;
+                @SwitchCameras.started -= m_Wrapper.m_LaptopActionsCallbackInterface.OnSwitchCameras;
+                @SwitchCameras.performed -= m_Wrapper.m_LaptopActionsCallbackInterface.OnSwitchCameras;
+                @SwitchCameras.canceled -= m_Wrapper.m_LaptopActionsCallbackInterface.OnSwitchCameras;
+                @Escape.started -= m_Wrapper.m_LaptopActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_LaptopActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_LaptopActionsCallbackInterface.OnEscape;
+            }
+            m_Wrapper.m_LaptopActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Hack.started += instance.OnHack;
+                @Hack.performed += instance.OnHack;
+                @Hack.canceled += instance.OnHack;
+                @SwitchCameras.started += instance.OnSwitchCameras;
+                @SwitchCameras.performed += instance.OnSwitchCameras;
+                @SwitchCameras.canceled += instance.OnSwitchCameras;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
+            }
+        }
+    }
+    public LaptopActions @Laptop => new LaptopActions(this);
+
+    // EndZone
+    private readonly InputActionMap m_EndZone;
+    private IEndZoneActions m_EndZoneActionsCallbackInterface;
+    private readonly InputAction m_EndZone_Restart;
+    public struct EndZoneActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public EndZoneActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Restart => m_Wrapper.m_EndZone_Restart;
+        public InputActionMap Get() { return m_Wrapper.m_EndZone; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EndZoneActions set) { return set.Get(); }
+        public void SetCallbacks(IEndZoneActions instance)
+        {
+            if (m_Wrapper.m_EndZoneActionsCallbackInterface != null)
+            {
+                @Restart.started -= m_Wrapper.m_EndZoneActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_EndZoneActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_EndZoneActionsCallbackInterface.OnRestart;
+            }
+            m_Wrapper.m_EndZoneActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
+            }
+        }
+    }
+    public EndZoneActions @EndZone => new EndZoneActions(this);
+
+    // Crate
+    private readonly InputActionMap m_Crate;
+    private ICrateActions m_CrateActionsCallbackInterface;
+    private readonly InputAction m_Crate_Break;
+    public struct CrateActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public CrateActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Break => m_Wrapper.m_Crate_Break;
+        public InputActionMap Get() { return m_Wrapper.m_Crate; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CrateActions set) { return set.Get(); }
+        public void SetCallbacks(ICrateActions instance)
+        {
+            if (m_Wrapper.m_CrateActionsCallbackInterface != null)
+            {
+                @Break.started -= m_Wrapper.m_CrateActionsCallbackInterface.OnBreak;
+                @Break.performed -= m_Wrapper.m_CrateActionsCallbackInterface.OnBreak;
+                @Break.canceled -= m_Wrapper.m_CrateActionsCallbackInterface.OnBreak;
+            }
+            m_Wrapper.m_CrateActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Break.started += instance.OnBreak;
+                @Break.performed += instance.OnBreak;
+                @Break.canceled += instance.OnBreak;
+            }
+        }
+    }
+    public CrateActions @Crate => new CrateActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -626,11 +1056,33 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnVerticalMovement(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
     }
     public interface IForkliftActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnLift(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
+    }
+    public interface IDetonatorActions
+    {
+        void OnPickupC4(InputAction.CallbackContext context);
+        void OnPlaceC4(InputAction.CallbackContext context);
+        void OnDetonateC4(InputAction.CallbackContext context);
+    }
+    public interface ILaptopActions
+    {
+        void OnHack(InputAction.CallbackContext context);
+        void OnSwitchCameras(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
+    }
+    public interface IEndZoneActions
+    {
+        void OnRestart(InputAction.CallbackContext context);
+    }
+    public interface ICrateActions
+    {
+        void OnBreak(InputAction.CallbackContext context);
     }
 }

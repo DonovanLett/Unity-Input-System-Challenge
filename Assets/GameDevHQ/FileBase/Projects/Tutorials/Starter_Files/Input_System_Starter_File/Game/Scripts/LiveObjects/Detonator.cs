@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using UnityEngine;
 
 namespace Game.Scripts.LiveObjects
@@ -11,32 +12,55 @@ namespace Game.Scripts.LiveObjects
         private bool _c4Placed;
         private MeshRenderer _render;
         [SerializeField]
-        private InteractableZone[] _interactableZone;
+        private InteractableZone[] _interactableZone; 
 
-        private void OnEnable()
+        private PlayerInputActions _inputActions; //
+
+        private void OnEnable() //
         {
-            InteractableZone.onZoneInteractionComplete += InteractableZone_onZoneInteractionComplete;
+            _inputActions = new PlayerInputActions();
+            _inputActions.Detonator.Enable();
+            _inputActions.Detonator.PlaceC4.performed += PlaceC4;
+
+          //  InteractableZone.onZoneInteractionComplete += InteractableZone_onZoneInteractionComplete;
         }
+
+        /* private void OnEnable()
+         {
+             InteractableZone.onZoneInteractionComplete += InteractableZone_onZoneInteractionComplete;
+         } */
 
         private void Start()
         {
             _render = GetComponent<MeshRenderer>();
         }
 
-        private void InteractableZone_onZoneInteractionComplete(InteractableZone zone)
+        private void PlaceC4(UnityEngine.InputSystem.InputAction.CallbackContext context) //
+        {
+            if (_c4Placed != true && _interactableZone[0].GetZoneID() == 1 && _interactableZone[0].IsInZone()) //placed C4
+            {
+                _interactableZone[0].OnPressKeyHit();
+
+                PlaceC4(_interactableZone[0].GetItems()[0].transform);
+                _c4Placed = true;
+            }
+        }
+
+       /* private void InteractableZone_onZoneInteractionComplete(InteractableZone zone)
         {
             if (_c4Placed != true && zone.GetZoneID() == 1) //placed C4
             {             
                 PlaceC4(zone.GetItems()[0].transform);
                 _c4Placed = true;                
             }
-        }
+        } */
 
         public void TriggerExplosion()
         {
             if (_c4Placed == false)
                 return;
 
+            _interactableZone[1].OnPressKeyHit();
             _c4.Explode();
             _c4Placed = false;
             _interactableZone[1].CompleteTask(2);
@@ -56,10 +80,14 @@ namespace Game.Scripts.LiveObjects
             _render.enabled = true;
         }
 
-        private void Ondisable()
+        private void OnDisable() //
+        {
+            _inputActions.Detonator.PlaceC4.performed -= PlaceC4;
+        }
+
+       /* private void Ondisable()
         {
             InteractableZone.onZoneInteractionComplete -= InteractableZone_onZoneInteractionComplete;
-        }
+        } */
     }
 }
-

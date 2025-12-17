@@ -1,9 +1,10 @@
+using Cinemachine;
+using Game.Scripts.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using UnityEngine;
-using Cinemachine;
-using Game.Scripts.UI;
 
 namespace Game.Scripts.LiveObjects
 {
@@ -30,18 +31,36 @@ namespace Game.Scripts.LiveObjects
         public static event Action OnEnterFlightMode;
         public static event Action onExitFlightmode;
 
-        private PlayerInputActions _droneInput;
+        private PlayerInputActions _droneInput;//
 
-        private void OnEnable()
+        private void OnEnable() //
         {
-            InteractableZone.onZoneInteractionComplete += EnterFlightMode;
-
             _droneInput = new PlayerInputActions();
             _droneInput.Drone.Enable();
-            _droneInput.Drone.Escape.started += Escape_performed;
+            _droneInput.Drone.Enter.performed += EnterFlightMode;
+            _droneInput.Drone.Escape.performed += Escape;
         }
 
-        private void EnterFlightMode(InteractableZone zone)
+      /*  private void OnEnable()
+        {
+              InteractableZone.onZoneInteractionComplete += EnterFlightMode;
+        } */
+
+        private void EnterFlightMode(UnityEngine.InputSystem.InputAction.CallbackContext context) //
+        {
+            if (_inFlightMode != true && _interactableZone.GetZoneID() == 4 && _interactableZone.IsInZone()) // drone Scene
+            {
+                _interactableZone.OnPressKeyHit();
+                _propAnim.SetTrigger("StartProps");
+                _droneCam.Priority = 11;
+                _inFlightMode = true;
+                OnEnterFlightMode?.Invoke();
+                UIManager.Instance.DroneView(true);
+                _interactableZone.CompleteTask(4);
+            }
+        }
+
+      /*  private void EnterFlightMode(InteractableZone zone)
         {
             if (_inFlightMode != true && zone.GetZoneID() == 4) // drone Scene
             {
@@ -52,7 +71,7 @@ namespace Game.Scripts.LiveObjects
                 UIManager.Instance.DroneView(true);
                 _interactableZone.CompleteTask(4);
             }
-        }
+        } */
 
         private void ExitFlightMode()
         {            
@@ -77,7 +96,7 @@ namespace Game.Scripts.LiveObjects
             }
         }
 
-        private void Escape_performed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        private void Escape(UnityEngine.InputSystem.InputAction.CallbackContext context) //
         {
             if (_inFlightMode)
             {
@@ -167,9 +186,16 @@ namespace Game.Scripts.LiveObjects
 
 
 
-        private void OnDisable()
+        private void OnDisable() //
+        {
+            _droneInput.Drone.Enter.performed -= EnterFlightMode;
+            _droneInput.Drone.Escape.performed -= Escape;
+          //  _droneInput.Drone.Disable();
+        }
+
+       /* private void OnDisable()
         {
             InteractableZone.onZoneInteractionComplete -= EnterFlightMode;
-        }
+        } */
     }
 }
