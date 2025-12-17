@@ -619,6 +619,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""id"": ""68327cb4-4131-4f03-82fa-6b79a887d2ec"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
+                    ""interactions"": ""MultiTap"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DoubleBreak"",
+                    ""type"": ""Button"",
+                    ""id"": ""8d194c33-c31b-4611-867b-76612a448038"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 }
@@ -632,6 +641,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Break"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""340b2828-3ffd-458f-a58d-b89b9aecf2ce"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Hold(duration=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DoubleBreak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -672,6 +692,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Crate
         m_Crate = asset.FindActionMap("Crate", throwIfNotFound: true);
         m_Crate_Break = m_Crate.FindAction("Break", throwIfNotFound: true);
+        m_Crate_DoubleBreak = m_Crate.FindAction("DoubleBreak", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1018,11 +1039,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Crate;
     private ICrateActions m_CrateActionsCallbackInterface;
     private readonly InputAction m_Crate_Break;
+    private readonly InputAction m_Crate_DoubleBreak;
     public struct CrateActions
     {
         private @PlayerInputActions m_Wrapper;
         public CrateActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Break => m_Wrapper.m_Crate_Break;
+        public InputAction @DoubleBreak => m_Wrapper.m_Crate_DoubleBreak;
         public InputActionMap Get() { return m_Wrapper.m_Crate; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1035,6 +1058,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Break.started -= m_Wrapper.m_CrateActionsCallbackInterface.OnBreak;
                 @Break.performed -= m_Wrapper.m_CrateActionsCallbackInterface.OnBreak;
                 @Break.canceled -= m_Wrapper.m_CrateActionsCallbackInterface.OnBreak;
+                @DoubleBreak.started -= m_Wrapper.m_CrateActionsCallbackInterface.OnDoubleBreak;
+                @DoubleBreak.performed -= m_Wrapper.m_CrateActionsCallbackInterface.OnDoubleBreak;
+                @DoubleBreak.canceled -= m_Wrapper.m_CrateActionsCallbackInterface.OnDoubleBreak;
             }
             m_Wrapper.m_CrateActionsCallbackInterface = instance;
             if (instance != null)
@@ -1042,6 +1068,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Break.started += instance.OnBreak;
                 @Break.performed += instance.OnBreak;
                 @Break.canceled += instance.OnBreak;
+                @DoubleBreak.started += instance.OnDoubleBreak;
+                @DoubleBreak.performed += instance.OnDoubleBreak;
+                @DoubleBreak.canceled += instance.OnDoubleBreak;
             }
         }
     }
@@ -1084,5 +1113,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface ICrateActions
     {
         void OnBreak(InputAction.CallbackContext context);
+        void OnDoubleBreak(InputAction.CallbackContext context);
     }
 }

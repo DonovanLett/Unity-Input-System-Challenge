@@ -23,6 +23,7 @@ namespace Game.Scripts.LiveObjects
             _inputActions = new PlayerInputActions();
             _inputActions.Crate.Enable();
             _inputActions.Crate.Break.performed += Break;
+            _inputActions.Crate.DoubleBreak.performed += DoubleBreak; // EDIT
         }
 
         /*  private void OnEnable()
@@ -57,32 +58,41 @@ namespace Game.Scripts.LiveObjects
             }
         }
 
-      /*  private void InteractableZone_onZoneInteractionComplete(InteractableZone zone)
+        private void DoubleBreak(UnityEngine.InputSystem.InputAction.CallbackContext context) // EDIT
         {
-            
-            if (_isReadyToBreak == false && _brakeOff.Count >0)
+            Break(context);
+            if (_brakeOff.Count > 0)
             {
-                _wholeCrate.SetActive(false);
-                _brokenCrate.SetActive(true);
-                _isReadyToBreak = true;
+                Break(context);
             }
+        }
 
-            if (_isReadyToBreak && zone.GetZoneID() == 6) //Crate zone            
-            {
-                if (_brakeOff.Count > 0)
-                {
-                    BreakPart();
-                    StartCoroutine(PunchDelay());
-                }
-                else if(_brakeOff.Count == 0)
-                {
-                    _isReadyToBreak = false;
-                    _crateCollider.enabled = false;
-                    _interactableZone.CompleteTask(6);
-                    Debug.Log("Completely Busted");
-                }
-            }
-        } */
+        /*  private void InteractableZone_onZoneInteractionComplete(InteractableZone zone)
+          {
+
+              if (_isReadyToBreak == false && _brakeOff.Count >0)
+              {
+                  _wholeCrate.SetActive(false);
+                  _brokenCrate.SetActive(true);
+                  _isReadyToBreak = true;
+              }
+
+              if (_isReadyToBreak && zone.GetZoneID() == 6) //Crate zone            
+              {
+                  if (_brakeOff.Count > 0)
+                  {
+                      BreakPart();
+                      StartCoroutine(PunchDelay());
+                  }
+                  else if(_brakeOff.Count == 0)
+                  {
+                      _isReadyToBreak = false;
+                      _crateCollider.enabled = false;
+                      _interactableZone.CompleteTask(6);
+                      Debug.Log("Completely Busted");
+                  }
+              }
+          } */
 
         private void Start()
         {
@@ -96,7 +106,7 @@ namespace Game.Scripts.LiveObjects
         {
             int rng = Random.Range(0, _brakeOff.Count);
             _brakeOff[rng].constraints = RigidbodyConstraints.None;
-            _brakeOff[rng].AddForce(new Vector3(1f, 1f, 1f), ForceMode.Force);
+            _brakeOff[rng].AddForce(new Vector3(1f, 1f, 1f), ForceMode.Force); // SWITCH BACK TO ONE
             _brakeOff.Remove(_brakeOff[rng]);       
         }
 
